@@ -1,0 +1,169 @@
+// 转换单位为 px
+@function px($num)
+    @if $num == 0
+        @return 0
+    @else
+        @return strip-unit($num) + px
+
+// 转换单位为 rem
+@function rem($num)
+    @if $num == 0
+        @return 0
+    @else
+        @return strip-unit($num) / $ratio / $root-size + rem
+
+// 通过默认单位设置尺寸
+@function default-unit($num)
+    @if $default-unit == px
+        @return px($num)
+    @else if $default-unit == rem
+        @return rem($num)
+    @else
+        @warn "$default-unit 只接受 rem, px"
+
+// 智能设置单位，如果参数没有单位使用默认单位
+@function smart-unit($num)
+    @if type-of($num) == 'number' and unitless($num)
+        @return default-unit($num)
+    @else
+        @return $num
+
+// 自动设置单位
+@function u($nums)
+    $result: ()
+    @if type-of($nums) == 'list'
+        @each $num in $nums
+            $result: append($result, smart-unit($num))
+    @else
+        $result: smart-unit($nums)
+
+    @return $result
+
+// 去掉单位
+@function strip-unit($num)
+    @if unitless($num)
+        @return $num
+    @else if not unitless($num) and type-of($num) == 'number'
+        @return $num / ($num * 0 + 1)
+
+@function clockhand($size)
+    $top: _
+    $right: _
+    $bottom: _
+    $left: _
+
+    $len: length($size)
+
+    @if $len == 1
+        $top: nth($size, 1)
+        $right: $top
+        $bottom: $top
+        $left: $top
+    @else if $len == 2
+        $top: nth($size, 1)
+        $right: nth($size, 2)
+        $bottom: $top
+        $left: $right
+    @else if $len == 3
+        $top: nth($size, 1)
+        $right: nth($size, 2)
+        $bottom: nth($size, 3)
+        $left: $right
+    @else if $len == 4
+        $top: nth($size, 1)
+        $right: nth($size, 2)
+        $bottom: nth($size, 3)
+        $left: nth($size, 4)
+    @return (top: $top, right: $right, bottom: $bottom, left: $left)
+
+// 生成属性
+@mixin reduce($size, $prefix: "", $suffix: "")
+    $result: clockhand($size)
+
+    $prefix: if($prefix == "", "", "#{$prefix}-")
+    $suffix: if($suffix == "", "", "-#{$suffix}")
+
+    $top: map-get($result, top)
+    $right: map-get($result, right)
+    $bottom: map-get($result, bottom)
+    $left: map-get($result, left)
+
+    @if $top != _
+        #{$prefix}top: u($top)
+    @if $right != _
+        #{$prefix}right: u($right)
+    @if $bottom != _
+        #{$prefix}bottom: u($bottom)
+    @if $left != _
+        #{$prefix}left: u($left)
+
+// 通过伪类清除浮动
+@mixin clearfix()
+    &:after
+        content: ""
+        display: table
+        clear: both
+
+// 设置尺寸
+// @param {Number} $width 宽度
+// @param {Number} $height 高度，该参数是可选的，如果不填，则宽高一致
+@mixin size($width, $height: _)
+    width: u($width)
+    height: if($height == _, u($width), u($height))
+
+// padding
+@mixin padding($size...)
+    @include reduce($size, padding)
+
+// margin
+@mixin margin($size...)
+    @include reduce($size, margin)
+
+// relative
+@mixin relative($size...)
+    position: relative
+    @include reduce($size)
+
+// absolute
+@mixin absolute($size...)
+    position: absolute
+    @include reduce($size)
+
+// fixed
+@mixin fixed($size...)
+    position: fixed
+    @include reduce($size)
+
+// @TODO 没有确定 make-background 和 background 的具体含义，没有标准
+@mixin make-background($image, $map: null)
+    $list: (size, repeat, position, color, image)
+    $default: (size: 100%, repeat: no-repeat, position: center center, color: null, image: null)
+
+    @if type-of($image) == "string"
+        $default: map-merge($default, (image: $image))
+    @else if type-of($image) == "map"
+        $default: map-merge($default, $image)
+
+    @if $map != null and type-of($map) == 'map'
+        $default: map-merge($default, $map)
+
+    @each $key, $value in $default
+        @if index($list, $key) == null
+            @warn "make-background 不接受 $key 为 #{$key} 的值"
+        @else
+            @if $value != null
+                background-#{$key}: u($value)
+
+@mixin background($map)
+    $list: (size, repeat, position, color, image)
+    @each $key, $value in $map
+        @if index($list, $key) == null
+            @warn "make-background 不接受 $key 为 #{$key} 的值"
+        @else
+            @if $value != null
+                background-#{$key}: u($value)
+
+%ellipsis
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis

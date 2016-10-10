@@ -1,0 +1,30 @@
+mixin css(files)
+    +resource('css', files)
+
+mixin script(files)
+    +resource('script', files)
+
+mixin image(files)
+    +resource('image', files)
+
+mixin cssVendor(files)
+    +resource('css', files, true)
+
+mixin scriptVendor(files)
+    +resource('script', files, true)
+
+mixin resource(dir, files, isVendor)
+    if typeof files === 'string'
+        +caseResource(dir, files, isVendor)
+    else
+        each file in files
+            +caseResource(dir, file, isVendor)
+
+mixin caseResource(dir, file, isVendor)
+    case dir
+        when 'image'
+            img(src=getPath(isVendor ? 'vendor' : 'image', file))
+        when 'script'
+            script(src=getPath(isVendor ? 'vendor' : 'script', file))
+        when 'css'
+            link(rel='stylesheet', href=getPath(isVendor ? 'vendor' : 'css', file))

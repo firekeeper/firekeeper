@@ -1,0 +1,10 @@
+// 使用 display: table 和 display: table-cell 属性创建 table 布局
+// 该方法接收两个参数，$col 为生成多少列，$align 为垂直方向对其方式，默认为居中
+@mixin table-layout($col, $align: middle)
+    width: 100%
+    display: table
+    .table-inner
+        width: 100 / $col + %
+        display: table-cell
+        vertical-align: $align
+        @content

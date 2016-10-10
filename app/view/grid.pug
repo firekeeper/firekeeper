@@ -1,0 +1,23 @@
+extends ../../config/layout.pug
+
+block append content
+    .row.demo-row
+        .col-24.demo-col.demo-col-1 100%
+    .row.demo-row
+        - for(var i = 0; i < 4; i++)
+            .col-6.demo-col.demo-col-3 25%
+    .row.demo-row
+        - for(var i = 0; i < 3; i++)
+            .col-8.demo-col.demo-col-2 33.33%
+    .row.demo-row
+        - for(var i = 0; i < 2; i++)
+            .col-12.demo-col.demo-col-1 50%
+    .row.demo-row
+        .col-16.demo-col.demo-col-3 66.66%
+        .col-8.demo-col.demo-col-3 33.33%
+    .row.demo-row
+        - for(var i = 0; i < 5; i++)
+            .demo-make-col-5.demo-col.demo-col-2 20%
+    .row.demo-row
+        - for(var i = 0; i < 7; i++)
+            .demo-make-col-7.demo-col.demo-col-1 14.28%

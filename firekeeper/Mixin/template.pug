@@ -1,0 +1,28 @@
+include ./variable
+//- 变量声明区块
+//- 配置网页中的相关变量
+//- 覆盖默认变量
+block variables
+
+include ./util
+
+include ./resource
+
+doctype html
+html(lang=lang, class=htmlClass)
+    head
+        title #{title}
+        block meta
+            meta(charset=charset)
+            meta(name='viewport', content='width=device-width, user-scalable=no')
+            meta(http-equiv='X-UA-Compatible', content='IE=Edge,chrome=1')
+            if !formatTelephone
+                meta(name='format-detection' content='telephone=no')
+        block css
+    body(class=bodyClass)
+        block before
+        block header
+        block content
+        block footer
+        block after
+        block script

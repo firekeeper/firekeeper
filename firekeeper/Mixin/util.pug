@@ -1,0 +1,23 @@
+-
+    //- 拼接资源路径
+    //- @param {String} dir 资源类型
+    //- @param {String} file 文件名
+    //- @returns {String} 完整的文件路径
+    function getPath(dir, file) {
+        var c = ''
+        switch (dir) {
+            case 'image':
+                c = `${path.image}${file}`
+                break
+            case 'css':
+                c = `${path.css}${file}`
+                break
+            case 'script':
+                c = `${path.script}${file}`
+                break
+            case 'vendor':
+                c = `${path.vendor}${file}`
+                break
+        }
+        return c
+    }
