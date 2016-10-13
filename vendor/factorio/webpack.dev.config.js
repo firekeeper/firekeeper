@@ -5,7 +5,7 @@ const path              = require('path'),
     CommonsChunkPlugin  = require('webpack/lib/optimize/CommonsChunkPlugin')
 
 module.exports = function(root) {
-    const webpackConfig = {
+    return {
         entry: {
             app: `${root}/app/module/app`
         },
@@ -54,7 +54,7 @@ module.exports = function(root) {
         resolve: {
             alias: {
                 'jquery': 'jquery/dist/jquery.min',
-                'PoineerUI': `${root}/firekeeper/PoineerUI`
+                'PoineerUI': `${root}/vendor/PoineerUI`
             },
             extensions: ['', '.js']
         },
@@ -66,5 +66,4 @@ module.exports = function(root) {
             return [postcssAutoprefixer]
         }
     }
-    return webpackConfig
 }

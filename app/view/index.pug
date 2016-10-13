@@ -1,1 +1,10 @@
 extends ../../config/master
+
+block append css
+    +cssVendor('app.css')
+
+block append content
+
+block append script
+    +scriptVendor('vendor.js')
+    +scriptVendor('app.js')
