@@ -2,10 +2,15 @@
  * reload 模块，使用该方法加载模块时
  * 都会重新加载，这样可以解决更新 Mock 后必须重启服务的问题
  */
+const yod = require('yod-mock')
+const Mock = require('./mock')
 const reload = require('require-reload')(require)
 
 function handleUrl(url) {
-    return url.substring(0, url.lastIndexOf('?'))
+    if (url.indexOf('?') > -1) {
+        return url.substring(0, url.indexOf('?'))
+    }
+    return url
 }
 
 /**
@@ -14,12 +19,11 @@ function handleUrl(url) {
  */
 module.exports = function() {
     return function(req, res, next) {
-        const mocks = reload('../../config/mock').mocks
+        const mocks = reload('../../config/mock')(Mock).mocks
         const method = req.method.toLowerCase()
         const url = method === 'get' ? handleUrl(req.url) : req.url
         if (mocks[method] && mocks[method][url]) {
-            res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify(mocks[method][url].template))
+            res.end(JSON.stringify(yod(mocks[method][url].template)))
             return false
         }
         next()

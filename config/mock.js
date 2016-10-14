@@ -1,6 +1,3 @@
-const yod = require('./faker')
-const Mock = require('../vendor/mock/mock')
-
 /**
  * 使用 Mock.js 拦截 ajax 请求，并返回数据
  *
@@ -17,6 +14,26 @@ const Mock = require('../vendor/mock/mock')
  *   }))
  */
 
+//
+// module.exports = Mock
 
+/**
+ * @param Mock
+ * @param yod
+ * @returns {*}
+ */
+module.exports = (Mock) => {
+    const User = {
+        name: '@ChineseName',
+        avatar: '@Avatar'
+    }
 
-module.exports = Mock
+    Mock.mock('/userinfo', 'GET', {
+        info: User,
+        name: 'AshenOne',
+        sex: '@Sex',
+        age: '@Integer(1,10)'
+    })
+
+    return Mock
+}
