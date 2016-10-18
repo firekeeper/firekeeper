@@ -1,0 +1,36 @@
+// 移除单位
+@function strip-unit($value)
+    $result: ()
+
+    @if type-of($value) == number
+        $result: $value / ($value * 0 + 1)
+
+    @else if type-of($value) == list
+        @each $val in $value
+            $result: append($result, strip-unit($val))
+
+    @else
+        $result: $value
+
+    @return $result
+
+// 比较两个值是否相等
+@function eq($val1, $val2)
+    // 两个值的类型必须一样
+    @if type-of($val1) != type-of($val2)
+        @return false
+    // 如果两个值都是 number 类型，就比较两个值的单位
+    @if type-of($val1) == number and type-of($val2) == number
+        @return unit($val1) == unit($val2)
+    // 如果两个值都是 list 类型，则遍历进行比较
+    @if type-of($val1) == list and type-of($val2) == list
+        @if length($val1) != length($val2)
+            @return false
+        $result: true
+        @for $i from 1 through length($val1)
+            @if eq(nth($val1, $i), nth($val2, $i)) == false
+                $result: false
+                @return false
+        @return $result
+    // 不满足以上条件，就使用默认的比较方法
+    @return $val1 == $val2

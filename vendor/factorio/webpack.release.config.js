@@ -48,13 +48,12 @@ module.exports = function(root) {
                     test: /\.pug$/,
                     loader: 'pug'
                 }
-
             ]
         },
         resolve: {
             alias: {
                 'jquery': 'jquery/dist/jquery.min',
-                'PoineerUI': `${root}/vendor/PoineerUI`
+                'vendor': `${root}/vendor`
             },
             extensions: ['', '.js']
         },
