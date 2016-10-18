@@ -1,0 +1,43 @@
+@import '../../vendor/compass/index';
+@import '../../vendor/sass-unit/core';
+
+@include begin-test('eq 函数') {
+    $tests:
+        (
+            condition: eq(1, 1),
+            msg: '1 == 1'
+        ),
+        (
+            condition: eq(1%, 1) == false,
+            msg: '1% != 1'
+        ),
+        (
+            condition: eq(1px, 1) == false,
+            msg: '1px != 1'
+        ),
+        (
+            condition: eq(1px, 1%) == false,
+            msg: '1px != 1%'
+        ),
+        (
+            condition: eq(1px, 1rem) == false,
+            msg: '1px != 1rem'
+        ),
+        (
+            condition: eq(1px 2px, 1 2) == false,
+            msg: '1px 2px != 1 2'
+        ),
+        (
+            condition: eq(1 2, 1 2),
+            msg: '1 2 == 1 2'
+        ),
+        (
+            condition: eq(1 2 #fff, 1 2) == false,
+            msg: '1 2 #fff != 1 2'
+        ),
+        (
+            condition: eq((key1: 1, key2: 2), (key1: 1, key2: 2)),
+            msg: '(key1: 1, key2: 2) == (key1: 1, key2: 2)'
+        );
+    @include do($tests);
+}

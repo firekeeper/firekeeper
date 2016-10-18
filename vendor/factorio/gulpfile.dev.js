@@ -1,3 +1,7 @@
+/**
+ * Created by ashenone on 16-10-18.
+ */
+
 module.exports = function(root) {
     const gulp     = require('gulp')
     const plugins  = require('gulp-load-plugins')()

@@ -1,0 +1,65 @@
+$words: a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 0;
+
+@function randomClassName() {
+    $word: nth($words, random(24));
+    @for $i from 1 through 15 {
+        $word: $word + nth($words, random(36));
+    }
+    @return $word;
+
+}
+
+@mixin title {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+@mixin echo($content, $type: null) {
+    :local(.#{$type}-#{randomClassName()}) {
+        &:before {
+            width: 40px;
+            display: inline-block;
+            text-align: center;
+            font-weight: bold;
+            @if $type == failed {
+                color: red;
+                content: '✕';
+            }
+            @else if $type == passed {
+                color: green;
+                content: '✓';
+            }
+        }
+        &:after {
+            content: '#{$content}';
+        }
+    }
+}
+
+@mixin failed($msg) {
+    @include echo($msg, failed)
+}
+
+@mixin passed($msg) {
+    @include echo($msg, passed)
+}
+
+@mixin assert($condition, $msg) {
+    @if $condition {
+        @include passed($msg);
+    }
+    @else {
+        @include failed($msg);
+    }
+}
+
+@mixin begin-test($project) {
+    @content;
+}
+
+@mixin do($tests) {
+    @each $test in $tests {
+        @include assert(map-get($test, "condition"), map-get($test, "msg"));
+    }
+}
