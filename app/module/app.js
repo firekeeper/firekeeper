@@ -2,11 +2,18 @@ import './common/style.sass'
 
 import SassUnit from 'vendor/sass-unit/core'
 
-import eqUnit from '../../test/sass/eq.scss'
-import stripUnit from '../../test/sass/strip-unit.scss'
+import eqCase from '../../test/sass/eq-case.scss'
+import stripUnitCase from '../../test/sass/strip-unit-case.scss'
+import pxCase from '../../test/sass/px-case.scss'
+import remCase from '../../test/sass/rem-case.scss'
+import uCase from '../../test/sass/u-case.scss'
 
-console.log(eqUnit)
+SassUnit('eq 测试', eqCase)
 
-SassUnit('eq 测试', eqUnit)
+SassUnit('strip-unit 测试', stripUnitCase)
 
-SassUnit('strip-unit 测试', stripUnit)
+SassUnit('px 测试', pxCase)
+
+SassUnit('rem 测试', remCase)
+
+SassUnit('u 测试', uCase)
