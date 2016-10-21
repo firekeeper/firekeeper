@@ -5,13 +5,13 @@
 const path              = require('path'),
     postcssAutoprefixer = require('autoprefixer'),
     webpack             = require('webpack'),
-    ExtractTextPlugin   = require('extract-text-webpack-plugin'),
     CommonsChunkPlugin  = require('webpack/lib/optimize/CommonsChunkPlugin')
 
 module.exports = function(root) {
     return {
         entry: {
-            sass: `${root}/test/handle/entry/sass`
+            sass: `${root}/test/handle/entry/sass`,
+            media: `${root}/test/handle/entry/media`
         },
         output: {
             path: `${root}/test/output/vendor`,
@@ -61,6 +61,9 @@ module.exports = function(root) {
             },
             extensions: ['', '.js']
         },
+        plugins: [
+            new CommonsChunkPlugin('vendor.js')
+        ],
         postcss: function() {
             return [postcssAutoprefixer]
         }
