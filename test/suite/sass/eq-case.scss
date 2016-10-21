@@ -1,5 +1,5 @@
-@import '../../vendor/compass/index';
-@import '../../vendor/sass-unit/core';
+@import '../../../vendor/compass/index';
+@import '../../../vendor/sass-unit/core';
 
 @include begin-test('eq 函数') {
     $tests:
@@ -73,4 +73,8 @@
             msg: '1 2 #fff (3 4) == 1 2 #fff (3 4)'
         );
     @include do($tests);
+}
+
+.test {
+    transform: translate(100%, 100%);
 }

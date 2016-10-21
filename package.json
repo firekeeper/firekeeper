@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "gulp release -d && gulp -d",
     "source": "gulp release -d",
-    "release": "gulp release"
+    "release": "gulp release",
+    "vendor-test": "gulp vendor:test"
   },
   "repository": {
     "type": "git",

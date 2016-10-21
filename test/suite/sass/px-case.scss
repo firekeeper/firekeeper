@@ -1,5 +1,5 @@
-@import '../../vendor/compass/index';
-@import '../../vendor/sass-unit/core';
+@import '../../../vendor/compass/index';
+@import '../../../vendor/sass-unit/core';
 
 @include begin-test('px 函数') {
     $tests:

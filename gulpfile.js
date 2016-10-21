@@ -1,1 +1,1 @@
-require('./vendor/factorio/gulpfile.dev')(__dirname)
+require('./vendor/factorio/gulpfile')(__dirname)

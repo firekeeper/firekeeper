@@ -2,11 +2,11 @@ import './common/style.sass'
 
 import SassUnit from 'vendor/sass-unit/core'
 
-import eqCase from '../../test/sass/eq-case.scss'
-import stripUnitCase from '../../test/sass/strip-unit-case.scss'
-import pxCase from '../../test/sass/px-case.scss'
-import remCase from '../../test/sass/rem-case.scss'
-import uCase from '../../test/sass/u-case.scss'
+import eqCase from '../../test/suite/sass/eq-case.scss'
+import stripUnitCase from '../../test/suite/sass/strip-unit-case.scss'
+import pxCase from '../../test/suite/sass/px-case.scss'
+import remCase from '../../test/suite/sass/rem-case.scss'
+import uCase from '../../test/suite/sass/u-case.scss'
 
 SassUnit('eq 测试', eqCase)
 

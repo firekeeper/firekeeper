@@ -29,5 +29,6 @@ module.exports = function(root) {
     require('./tasks/script')(files, argv, resource)
     require('./tasks/common')(files, argv, root, resource, dest, app)
     require('./tasks/webpack')(root, argv, resource)
+    require('./tasks/test')(root)
 
 }
