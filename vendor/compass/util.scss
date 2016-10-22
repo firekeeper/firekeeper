@@ -26,3 +26,10 @@
     @return $val1 == $val2;
 }
 
+%cleafix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

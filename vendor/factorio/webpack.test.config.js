@@ -13,7 +13,8 @@ module.exports = function(root) {
             unit: `${root}/test/handle/entry/unit`,
             media: `${root}/test/handle/entry/media`,
             layout: `${root}/test/handle/entry/layout`,
-            normalize: `${root}/test/handle/entry/normalize`
+            normalize: `${root}/test/handle/entry/normalize`,
+            grid: `${root}/test/handle/entry/grid`
         },
         output: {
             path: `${root}/test/output/vendor`,

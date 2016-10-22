@@ -1,0 +1,32 @@
+html(lang=lang)
+    head
+        title Sass 单元测试 media-case
+        block meta
+            meta(charset=charset)
+            meta(name='viewport', content='width=device-width, user-scalable=no')
+            meta(http-equiv='X-UA-Compatible', content='IE=Edge,chrome=1')
+            meta(name='format-detection' content='telephone=no')
+    body
+        h1 栅格布局
+        .row.case-row
+            .col-24.case-col 100%
+        .row.case-row
+            .col-12.case-col 50%
+            .col-12.case-col 50%
+        .row.case-row
+            .col-8.case-col 33.3333%
+            .col-8.case-col 33.3333%
+            .col-8.case-col 33.3333%
+        .row.case-row
+            .col-16.case-col 66.6666%
+            .col-8.case-col 33.3333%
+        .row.case-row
+            .make-5-col.case-col 20%
+            .make-5-col.case-col 20%
+            .make-5-col.case-col 20%
+            .make-5-col.case-col 20%
+            .make-5-col.case-col 20%
+        .row.case-row
+            .col-12.offset-12.case-col 50% 并偏移 50%
+        script(src='vendor/vendor.js')
+        script(src='vendor/grid.js')
