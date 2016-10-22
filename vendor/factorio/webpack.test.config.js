@@ -14,7 +14,8 @@ module.exports = function(root) {
             media: `${root}/test/handle/entry/media`,
             layout: `${root}/test/handle/entry/layout`,
             normalize: `${root}/test/handle/entry/normalize`,
-            grid: `${root}/test/handle/entry/grid`
+            grid: `${root}/test/handle/entry/grid`,
+            util: `${root}/test/handle/entry/util`
         },
         output: {
             path: `${root}/test/output/vendor`,
