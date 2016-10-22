@@ -62,6 +62,15 @@
     }
 }
 
-@function u($value) {
+@function default-unit($value) {
     @return call($default-unit, $value);
+}
+
+@function u($value) {
+    @if type-of($value) == number and unitless($value) {
+        @return default-unit($value);
+    }
+    @else {
+        @return $value;
+    }
 }

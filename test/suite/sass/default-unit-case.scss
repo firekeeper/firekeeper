@@ -1,0 +1,35 @@
+@import '../../../vendor/compass/index';
+@import '../../../vendor/sass-unit/core';
+
+@include begin-test('default-unit 函数') {
+    $tests:
+        (
+            condition: type-of(default-unit(1rem)) == number,
+            msg: '转换单位后的值是 number 类型'
+        ),
+        (
+            condition: eq(default-unit(0rem), 0),
+            msg: '0rem => 0'
+        ),
+        (
+            condition: eq(default-unit(1rem), 1px),
+            msg: '1rem => 1px'
+        ),
+        (
+            condition: eq(default-unit(1%), 1px),
+            msg: '1% => 1px'
+        ),
+        (
+            condition: default-unit(#fff) == #fff,
+            msg: '#fff => #fff'
+        ),
+        (
+            condition: eq(default-unit(1rem 2em 3% #fff), 1px 2px 3px #fff),
+            msg: '1rem 2em 3% #fff => 1px 2px 3px #fff'
+        ),
+        (
+            condition: eq(default-unit(1rem 2em 3% (4 0)), 1px 2px 3px (4px 0)),
+            msg: '1rem 2em 3% (4 0) == 1px 2px 3px (4px 0)'
+        );
+    @include do($tests);
+}

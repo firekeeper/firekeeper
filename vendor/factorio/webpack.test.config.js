@@ -10,8 +10,9 @@ const path              = require('path'),
 module.exports = function(root) {
     return {
         entry: {
-            sass: `${root}/test/handle/entry/sass`,
-            media: `${root}/test/handle/entry/media`
+            unit: `${root}/test/handle/entry/unit`,
+            media: `${root}/test/handle/entry/media`,
+            layout: `${root}/test/handle/entry/layout`
         },
         output: {
             path: `${root}/test/output/vendor`,

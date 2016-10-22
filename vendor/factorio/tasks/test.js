@@ -114,7 +114,15 @@ module.exports = (root) => {
             server: { baseDir: `${root}/test/output` },
             middleware: [
                 serveIndex(`${root}/test/output`, { icons: true })
-            ]
+            ],
+            snippetOptions: {
+                rule: {
+                    match: /<\/head>/i,
+                    fn: function(snippet, match) {
+                        return `${match}${snippet}`
+                    }
+                }
+            }
         })
     })
 }
