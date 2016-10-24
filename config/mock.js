@@ -3,5 +3,8 @@
  * @returns {*}
  */
 module.exports = (Mock) => {
+
+
+
     return Mock
 }

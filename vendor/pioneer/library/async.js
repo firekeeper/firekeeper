@@ -53,6 +53,10 @@ class Async {
             response,
             ...o
         } = this.sequence[obj]
+        // 处理参数
+        if (typeof sendData === 'function') {
+            callback = sendData
+        }
         if (!this.sequence[obj]) {
             console.warn(`${obj} 没有被注册`)
             return
@@ -77,7 +81,7 @@ class Async {
             success: (data) => {
                 this.sequence[obj].response = data
                 success(data)
-                callback(data)
+                callback && callback(data)
             },
             complete: () => {
                 this.sequence[obj].fetching = false
@@ -85,7 +89,7 @@ class Async {
             ...o
         }
         // 如果想以新的参数进行请求
-        if (sendData) { ajaxOption.data = sendData }
+        if (sendData && typeof sendData === 'object') { ajaxOption.data = sendData }
         // 最终交给 jQuery.ajax 来完成
         $.ajax(ajaxOption)
     }

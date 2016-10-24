@@ -53,7 +53,8 @@ module.exports = function(root) {
         resolve: {
             alias: {
                 'jquery': 'jquery/dist/jquery.min',
-                'vendor': `${root}/vendor`
+                'vendor': `${root}/vendor`,
+                'pioneer': `${root}/vendor/pioneer`
             },
             extensions: ['', '.js']
         },
