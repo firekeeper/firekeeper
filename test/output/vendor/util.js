@@ -44,7 +44,7 @@ webpackJsonp([5],{
 
 
 	// module
-	exports.push([module.id, ".case-ellipsis-1, .case-ellipsis-2 {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis; }\n\n.case-ellipsis-2 {\n  width: 50%; }\n", ""]);
+	exports.push([module.id, ".case-ellipsis-1, .case-ellipsis-2 {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis; }\n\n.case-ellipsis-2 {\n  width: 50%;\n  margin-top: 50px;\n  margin-bottom: 20px; }\n", ""]);
 
 	// exports
 
