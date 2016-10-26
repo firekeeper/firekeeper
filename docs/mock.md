@@ -7,11 +7,11 @@
 首先在 `config/mock.js` 中配置拦截方法
 
 ```javascript
-    // 拦截以 POST 方式请求的 /login 方法
-    // 并返回一个 JSON
-    Mock.mock('/login', 'POST', {
-        status: 1
-    })
+// 拦截以 POST 方式请求的 /login 方法
+// 并返回一个 JSON
+Mock.mock('/login', 'POST', {
+    status: 1
+})
 ```
 
 在项目中正常书写 Ajax 相关参数
