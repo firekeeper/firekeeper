@@ -6,9 +6,7 @@ const path              = require('path'),
 
 module.exports = function(root) {
     return {
-        entry: {
-            app: `${root}/app/module/app`
-        },
+        entry: require(`${root}/config/entry`)(root),
         output: {
             path: `${root}/release/resource/vendor`,
             filename: '[name].js'
