@@ -45,6 +45,10 @@ module.exports = function(root) {
                 {
                     test: /\.pug$/,
                     loader: 'pug'
+                },
+                {
+                    test: /\.vue$/,
+                    loader: 'vue'
                 }
             ]
         },
@@ -54,7 +58,7 @@ module.exports = function(root) {
                 'vendor': `${root}/vendor`,
                 'pioneer': `${root}/vendor/pioneer`
             },
-            extensions: ['', '.js']
+            extensions: ['', '.js', '.vue']
         },
         plugins: [
             new ExtractTextPlugin('[name].css'),
