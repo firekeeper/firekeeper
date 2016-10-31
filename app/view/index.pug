@@ -4,9 +4,6 @@ block append css
     +cssVendor('app.css')
 
 block append content
-    div
-        | bbbbb
 
 block append script
-    +scriptVendor('vendor.js')
-    +scriptVendor('app.js')
+    +scriptVendor(['vendor.js', 'app.js'])
