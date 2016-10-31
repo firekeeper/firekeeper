@@ -1,5 +1,13 @@
+<!--<template lang='pug'>-->
+    <!--.abc-->
+        <!--h1-->
+            <!--| {{ msg }}-->
+<!--</template>-->
+
 <template>
-    <h1>{{ msg }}</h1>
+    <div class="abc">
+        <h1>{{msg}}</h1>
+    </div>
 </template>
 
 <script>
@@ -11,3 +19,7 @@
         }
     }
 </script>
+
+<style lang='sass'>
+    @import './style'
+</style>

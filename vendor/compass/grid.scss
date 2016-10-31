@@ -5,7 +5,7 @@
 // 直接生成 24 栅格布局代码
 @mixin grid {
     .row {
-        @extend %cleafix;
+        @extend %clearfix;
     }
     @for $i from 1 through 24 {
         $result: percentage($i / 24);

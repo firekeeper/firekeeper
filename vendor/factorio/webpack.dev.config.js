@@ -16,8 +16,6 @@ module.exports = function(root) {
                 {
                     test: /\.js$/,
                     exclude: [path.resolve('node_modules'), path.resolve('app/vendor')],
-                    // loaders: ['babel?presets[]=es2015,presets[]=stage-1']
-                    // loaders: ['babel?presets[]=es2015']
                     loader: 'babel'
                 },
                 {
