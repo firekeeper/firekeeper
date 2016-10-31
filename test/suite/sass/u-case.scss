@@ -22,6 +22,11 @@
         (
             condition: eq(u(100%), 100%),
             msg: '100% => 100%'
+        ),
+        (
+            condition: eq(u(1rem 2em 3% 100 #fff), 1rem 2em 3% 100px #fff),
+            msg: '1rem 2em 3% 100 #fff => 1rem 2em 3% 100px #fff'
         );
+
     @include do($tests);
 }

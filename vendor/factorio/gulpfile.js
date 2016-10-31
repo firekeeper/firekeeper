@@ -25,7 +25,7 @@ module.exports = function(root) {
 
     require('./tasks/css')(files, argv, resource)
     require('./tasks/image')(files, argv, resource)
-    require('./tasks/view')(files, argv, app, dest)
+    require('./tasks/view')(files, argv, app, dest, root)
     require('./tasks/script')(files, argv, resource)
     require('./tasks/common')(files, argv, root, resource, dest, app)
     require('./tasks/webpack')(root, argv, resource)

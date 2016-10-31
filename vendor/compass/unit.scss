@@ -70,6 +70,13 @@
     @if type-of($value) == number and unitless($value) {
         @return default-unit($value);
     }
+    @else if type-of($value) == list {
+        $result: ();
+        @each $val in $value {
+            $result: append($result, u($val))
+        }
+        @return $result;
+    }
     @else {
         @return $value;
     }

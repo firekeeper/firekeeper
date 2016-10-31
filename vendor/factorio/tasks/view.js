@@ -1,14 +1,13 @@
 const gulp       = require('gulp'),
     plumber      = require('gulp-plumber'),
     changed      = require('gulp-changed'),
-    gulpif       = require('gulp-if'),
     pug          = require('gulp-pug'),
     htmlBeautify = require('gulp-html-beautify'),
     htmlmin      = require('gulp-htmlmin'),
     watch        = require('gulp-watch'),
     logger       = require('gulp-logger')
 
-module.exports = function(files, argv, app, dest) {
+module.exports = function(files, argv, app, dest, root) {
     gulp.task('pug', () => {
         return gulp.src([files.pug, `!${app}/view/**/_*.pug`])
             .pipe(changed(`${dest}/view`, { extension: '.html' }))
@@ -36,7 +35,7 @@ module.exports = function(files, argv, app, dest) {
     })
 
     gulp.task('watch:pug', () => {
-        watch([`/config/**/*.pug`, files.pug], () => {
+        watch([`${root}/config/**/*.pug`, files.pug], () => {
             gulp.start('pug')
         })
     })
