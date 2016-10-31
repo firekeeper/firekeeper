@@ -1,3 +1,9 @@
 import './common/style.sass'
 
-import './todo/main'
+import Vue from 'vue'
+import Todo from './todo/Todo'
+
+new Vue({
+    el: '#app',
+    components: { Todo }
+})
