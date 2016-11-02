@@ -2,20 +2,16 @@ import './common/style.sass'
 
 import Vue from 'vue'
 
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: '<li>{{ todo.text }}</li>'
-})
-
-const app7 = new Vue({
-    el: '#app-7',
+const vm = new Vue({
+    el: '#app-8',
     data: {
-        todos: [
-            { text: 'Learn Javascript' },
-            { text: 'Learn Vue' },
-            { text: 'Build something awesome' }
-        ]
+        a: 1
+    },
+    computed: {
+        b: function() {
+            return this.a + 1
+        }
     }
 })
 
-console.log(app7)
+window.vm = vm

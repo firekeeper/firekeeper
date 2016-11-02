@@ -4,9 +4,8 @@ block append css
     +cssVendor('app.css')
 
 block append content
-    #app-7
-        ol
-            todo-item(v-for='todo in todos' v-bind:todo='todo')
+    #app-8
+        p a={{a}}, b={{b}}
 
 block append script
     +scriptVendor(['vendor.js', 'app.js'])
