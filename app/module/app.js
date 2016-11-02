@@ -1,9 +1,21 @@
 import './common/style.sass'
 
 import Vue from 'vue'
-import Todo from './todo/Todo'
 
-new Vue({
-    el: '#app',
-    components: { Todo }
+Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
 })
+
+const app7 = new Vue({
+    el: '#app-7',
+    data: {
+        todos: [
+            { text: 'Learn Javascript' },
+            { text: 'Learn Vue' },
+            { text: 'Build something awesome' }
+        ]
+    }
+})
+
+console.log(app7)
