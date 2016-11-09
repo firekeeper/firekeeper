@@ -16,7 +16,7 @@ module.exports = function(root) {
                 {
                     test: /\.js$/,
                     exclude: [path.resolve('node_modules'), path.resolve('app/vendor')],
-                    loaders: ['babel?presets[]=es2015,presets[]=stage-1']
+                    loader: 'babel'
                 },
                 {
                     test: /\.css$/,
@@ -45,16 +45,21 @@ module.exports = function(root) {
                 {
                     test: /\.pug$/,
                     loader: 'pug'
+                },
+                {
+                    test: /\.vue$/,
+                    loader: 'vue'
                 }
             ]
         },
         resolve: {
             alias: {
                 'jquery': 'jquery/dist/jquery.min',
+                'vue$': 'vue/dist/vue',
                 'vendor': `${root}/vendor`,
                 'pioneer': `${root}/vendor/pioneer`
             },
-            extensions: ['', '.js']
+            extensions: ['', '.js', '.vue']
         },
         plugins: [
             new ExtractTextPlugin('[name].css'),

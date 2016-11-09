@@ -21,7 +21,10 @@ class Async {
             console.warn('参数 name 为空，该 Ajax 将不会被注册')
             return
         }
-        this.sequence[option.name] = $.extend(true, this.DEFAULT, option)
+        this.sequence[option.name] = {
+            ...this.DEFAULT,
+            ...option
+        }
     }
     getSequence() {
         return this.sequence
